@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #eef0ff;
+  --color-brand-100: #e0e3ff;
+  --color-brand-200: #c6caff;
+  --color-brand-300: #a3a8ff;
+  --color-brand-400: #7c7ffb;
+  --color-brand-500: #5d5cf0;
+  --color-brand-600: #4c46e0;
+  --color-brand-700: #3f39bd;
+  --color-brand-800: #363198;
+  --color-brand-900: #2e2c78;
+
+  --color-ink-50: #f7f8fa;
+  --color-ink-100: #eef0f3;
+  --color-ink-200: #dde1e7;
+  --color-ink-300: #c3c9d2;
+  --color-ink-400: #99a1ae;
+  --color-ink-500: #717a89;
+  --color-ink-600: #545c6b;
+  --color-ink-700: #3d4351;
+  --color-ink-800: #262b36;
+  --color-ink-900: #14171e;
+  --color-ink-950: #0b0d12;
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  @apply bg-ink-50 text-ink-900 dark:bg-ink-950 dark:text-ink-100 antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-brand-200);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-300) transparent;
+}
+
+.focus-ring {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-ink-950;
+}
+
+@keyframes waveform {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.wave-bar {
+  animation: waveform 1s ease-in-out infinite;
+}
